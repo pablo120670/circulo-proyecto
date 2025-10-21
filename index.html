@@ -3,116 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Texto Circular con Estrellas - Versión Avanzada</title>
+    <title>Texto Circular Animado</title>
     <link rel="stylesheet" href="estyle.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <h1>Texto Circular con Estrellas</h1>
-        <p class="subtitle">Versión avanzada con SVG y múltiples opciones de personalización</p>
-        
-        <!-- Ejemplo 1: Configuración básica -->
-        <div class="example-section">
-            <h2>Ejemplo 1: Configuración Básica</h2>
-            <div class="circular-text" 
-                 data-text="HOLA MUNDO BIENVENIDO" 
-                 data-size="200" 
-                 data-color="#ffffff" 
-                 data-speed="15"
-                 data-font-size="14"
-                 data-separator="✦"
-                 data-spacing="1.2">
-            </div>
+        <!-- Texto circular principal -->
+        <div class="circular-text" 
+             data-text="DISEÑO Y DESARROLLO WEB PERSONALIZADO" 
+             data-size="200" 
+             data-color="#ffffff" 
+             data-speed="25"
+             data-font-size="12"
+             data-separator="✦"
+             data-spacing="1.2"
+             data-separator-mode="auto"
+             data-manual-text="DISEÑO - Y - DESARROLLO - WEB - PERSONALIZADO">
         </div>
-        
-        <!-- Ejemplo 2: Con estrellas y colores personalizados -->
-        <div class="example-section">
-            <h2>Ejemplo 2: Con Estrellas y Colores</h2>
-            <div class="circular-text" 
-                 data-text="TEXTO CIRCULAR ANIMADO" 
-                 data-size="250" 
-                 data-color="#ff6b6b" 
-                 data-speed="20"
-                 data-font-size="16"
-                 data-separator="⭐"
-                 data-spacing="1.5">
-            </div>
-        </div>
-        
-        <!-- Ejemplo 3: Modo manual con guiones -->
-        <div class="example-section">
-            <h2>Ejemplo 3: Modo Manual</h2>
-            <div class="circular-text" 
-                 data-text="TEXTO PERSONALIZADO" 
-                 data-size="180" 
-                 data-color="#4ecdc4" 
-                 data-speed="12"
-                 data-font-size="12"
-                 data-separator="✦"
-                 data-spacing="1.2"
-                 data-separator-mode="manual"
-                 data-manual-text="-TEXTO -PERSONALIZADO -CON -GUIONES">
-            </div>
-        </div>
-        
-        <!-- Ejemplo 4: Texto largo -->
-        <div class="example-section">
-            <h2>Ejemplo 4: Texto Largo</h2>
-            <div class="circular-text" 
-                 data-text="ESTE ES UN TEXTO MUY LARGO QUE DEMUESTRA COMO SE COMPORTA EL SISTEMA CON CONTENIDO EXTENSO" 
-                 data-size="300" 
-                 data-color="#a8e6cf" 
-                 data-speed="25"
-                 data-font-size="14"
-                 data-separator="✨"
-                 data-spacing="1.0">
-            </div>
-        </div>
-        
-        <!-- Controles interactivos -->
-        <div class="controls">
-            <h2>Controles Interactivos</h2>
-            <div class="control-group">
-                <label for="customText">Texto personalizado:</label>
-                <input type="text" id="customText" placeholder="Escribe tu texto aquí...">
-            </div>
-            
-            <div class="control-group">
-                <label for="customSize">Tamaño:</label>
-                <input type="range" id="customSize" min="100" max="400" value="200">
-                <span id="sizeValue">200px</span>
-            </div>
-            
-            <div class="control-group">
-                <label for="customColor">Color:</label>
-                <input type="color" id="customColor" value="#ffffff">
-            </div>
-            
-            <div class="control-group">
-                <label for="customSpeed">Velocidad:</label>
-                <input type="range" id="customSpeed" min="5" max="50" value="20">
-                <span id="speedValue">20s</span>
-            </div>
-            
-            <div class="control-group">
-                <label for="customSeparator">Separador:</label>
-                <select id="customSeparator">
-                    <option value="✦">✦ Estrella</option>
-                    <option value="⭐">⭐ Estrella sólida</option>
-                    <option value="✨">✨ Brillo</option>
-                    <option value="★">★ Estrella negra</option>
-                    <option value="◆">◆ Diamante</option>
-                    <option value="●">● Círculo</option>
-                    <option value="*">* Asterisco</option>
-                </select>
-            </div>
-            
-            <button id="createCustom">Crear Texto Personalizado</button>
-        </div>
-        
-        <!-- Área para el texto personalizado -->
-        <div id="customArea" class="custom-area"></div>
     </div>
     
     <script src="script.js"></script>
