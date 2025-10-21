@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (separatorMode === 'manual') {
             // Modo manual: usar el texto con guiones y reemplazar por el separador elegido
             spacedText = manualText.replace(/-/g, ` ${separator} `);
+            // Para modo manual, solo repetir una vez para evitar cortes
             repeatedText = `${spacedText} ${separator} ${spacedText}`;
         } else {
             // Modo automático: dividir el texto en palabras y agregar separadores
@@ -39,9 +40,9 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.removeChild(tempText);
         
         // Calcular el radio basado en la longitud del texto con espaciado
-        const circumference = textLength * 1.2; // 20% de margen para separadores
+        const circumference = textLength * 1.5; // 50% de margen para evitar cortes
         const radius = circumference / (2 * Math.PI);
-        const finalRadius = Math.max(radius, size / 4); // Radio mínimo
+        const finalRadius = Math.max(radius, size / 3); // Radio mínimo más generoso
         
         // Crear el SVG
         const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
