@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Calcular el radio basado en la longitud del texto con espaciado
         const circumference = textLength * 1.2; // 20% de margen para separadores
         const radius = circumference / (2 * Math.PI);
-        const finalRadius = Math.max(radius, size / 4) + 4; // Radio mínimo + 4 píxeles
+        const finalRadius = Math.max(radius, size / 4) + 2; // Radio mínimo + 2 píxeles
         
         // Crear el SVG
         const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
