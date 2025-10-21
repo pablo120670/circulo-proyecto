@@ -80,8 +80,94 @@ document.addEventListener('DOMContentLoaded', function() {
         element.appendChild(svg);
     }
     
+    // Función para actualizar el texto circular desde el editor
+    function updateCircularText() {
+        const codeInput = document.getElementById('codeInput');
+        const circularTextElement = document.querySelector('.circular-text');
+        
+        if (codeInput && circularTextElement) {
+            try {
+                // Crear un elemento temporal para parsear el HTML
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = codeInput.value.trim();
+                const newCircularText = tempDiv.querySelector('.circular-text');
+                
+                if (newCircularText) {
+                    // Copiar todos los atributos data- del nuevo elemento al existente
+                    const attributes = newCircularText.attributes;
+                    for (let i = 0; i < attributes.length; i++) {
+                        const attr = attributes[i];
+                        if (attr.name.startsWith('data-')) {
+                            circularTextElement.setAttribute(attr.name, attr.value);
+                        }
+                    }
+                    
+                    // Limpiar y recrear el SVG
+                    circularTextElement.innerHTML = '';
+                    createCircularText(circularTextElement);
+                    
+                    // Mostrar notificación de éxito
+                    showNotification('¡Código actualizado exitosamente!', 'success');
+                } else {
+                    showNotification('Error: No se encontró un elemento .circular-text válido', 'error');
+                }
+            } catch (error) {
+                showNotification('Error al procesar el código: ' + error.message, 'error');
+            }
+        }
+    }
+    
+    // Función para mostrar notificaciones
+    function showNotification(message, type = 'info') {
+        const notification = document.createElement('div');
+        notification.textContent = message;
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: ${type === 'success' ? 'rgba(0, 255, 0, 0.9)' : type === 'error' ? 'rgba(255, 0, 0, 0.9)' : 'rgba(0, 0, 0, 0.9)'};
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            z-index: 1000;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 300px;
+        `;
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.style.animation = 'slideOut 0.3s ease';
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 300);
+        }, 3000);
+    }
+    
     // Aplicar a todos los elementos con clase circular-text
     document.querySelectorAll('.circular-text').forEach(createCircularText);
+    
+    // Event listener para el botón de actualizar
+    const updateButton = document.getElementById('updateCode');
+    if (updateButton) {
+        updateButton.addEventListener('click', updateCircularText);
+    }
+    
+    // Event listener para Enter en el textarea
+    const codeInput = document.getElementById('codeInput');
+    if (codeInput) {
+        codeInput.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 'Enter') {
+                updateCircularText();
+            }
+        });
+    }
     
     // Función para recalcular en caso de redimensionamiento
     window.addEventListener('resize', function() {
